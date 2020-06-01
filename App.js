@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, FlatList } from 'react-native';
+import {Text, View, StyleSheet, FlatList, Alert } from 'react-native';
 import Header from './components/Header';
 import ListItem from './components/ListItem';
+import AddItem from './components/AddItem';
 import uuid from 'react-native-uuid';
 
 
@@ -18,9 +19,21 @@ export default function App() {
       return prevItems.filter(item => item.id != id);
     });
   }
+
+ const addItem = (text) => {
+   if(!text) {
+    Alert.alert('Error', 'Add content to the task', {text: 'Ok'});
+   } else {
+     setItems(prevItems => {
+       return [{id: uuid(), text}, ...prevItems];
+     });
+   }
+ }
+
   return (
     <View style={styles.container}>
       <Header />
+      <AddItem addItem={addItem} />
       <FlatList 
       data={items}
       renderItem={({item})  => <ListItem item={item} deleteItem={deleteItem}/>}
