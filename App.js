@@ -4,6 +4,12 @@ import Header from './components/Header';
 import ListItem from './components/ListItem';
 import AddItem from './components/AddItem';
 import uuid from 'react-native-uuid';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
+const Stack = createStackNavigator();
 
 
 export default function App() {
@@ -31,14 +37,17 @@ export default function App() {
  }
 
   return (
-    <View style={styles.container}>
+    <NavigationContainer>{
+      <Stack.Navigator>
+        
       <Header />
       <AddItem addItem={addItem} />
       <FlatList 
       data={items}
       renderItem={({item})  => <ListItem item={item} deleteItem={deleteItem}/>}
       />
-    </View>
+    </Stack.Navigator>
+    }</NavigationContainer>
   );
 }
 
