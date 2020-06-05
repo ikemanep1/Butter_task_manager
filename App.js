@@ -3,6 +3,9 @@ import {Text, View, StyleSheet, FlatList, Alert } from 'react-native';
 import Header from './components/Header';
 import ListItem from './components/ListItem';
 import AddItem from './components/AddItem';
+import Page1 from './components/Page1';
+import Page2 from './components/Page2';
+import Page3 from './components/Page3';
 import uuid from 'react-native-uuid';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -39,13 +42,7 @@ export default function App() {
   return (
     <NavigationContainer>{
       <Stack.Navigator>
-        
-      <Header />
-      <AddItem addItem={addItem} />
-      <FlatList 
-      data={items}
-      renderItem={({item})  => <ListItem item={item} deleteItem={deleteItem}/>}
-      />
+        <Stack.Screen name="Home" component={Page1} />
     </Stack.Navigator>
     }</NavigationContainer>
   );
