@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
 import uuid from 'react-native-uuid';
+import AddItem from './AddItem';
+
 
 export default function ListItem({navigation}, item) {
   const [items, setItems] = useState ([
@@ -28,6 +30,7 @@ export default function ListItem({navigation}, item) {
  }
   return (
     <View>
+      <AddItem />
         <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     <TouchableOpacity style={styles.listItem}>
