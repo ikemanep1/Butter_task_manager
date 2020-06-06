@@ -1,17 +1,20 @@
 import * as React from 'react';
-import {Text, View, StyleSheet } from 'react-native';
+import {Button, Text, View, StyleSheet } from 'react-native';
 
-export default function Page2(props) {
+export default function Page2({ navigation }) {
   return (
     <View style={styles.header}>
-      <Text style={styles.text}>{props.title}</Text>
+      <Text style={styles.text}>Butter</Text>
+      <Button
+        title="Next"
+        onPress={() => navigation.navigate('Page3')}
+      />
+      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 };
 
-Page2.defaultProps = {
-    title: 'Butter'
-}
 
 
 const styles = StyleSheet.create({

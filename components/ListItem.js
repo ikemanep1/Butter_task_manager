@@ -1,9 +1,35 @@
-import * as React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
+import uuid from 'react-native-uuid';
 
-export default function ListItem({item, deleteItem}) {
+export default function ListItem(item) {
+  const [items, setItems] = useState ([
+    {id: uuid(), text: 'complete tutorials'},
+    {id: uuid(), text: 'complete models'},
+    {id: uuid(), text: 'complete exercises'},
+    {id: uuid(), text: 'complete all tasks'},
+  ])
+
+  const deleteItem = (id) => {
+    setItems(prevItems => {
+      return prevItems.filter(item => item.id != id);
+    });
+  }
+
+ const addItem = (text) => {
+   if(!text) {
+    Alert.alert('Error', 'Add content to the task', {text: 'Ok'});
+   } else {
+     setItems(prevItems => {
+       return [{id: uuid(), text}, ...prevItems];
+     });
+   }
+ }
   return (
+    <View>
+        <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     <TouchableOpacity style={styles.listItem}>
         <View style={StyleSheet.listItemView}>
             <Text style={styles.listItemText}>{item.text}</Text>
@@ -11,6 +37,7 @@ export default function ListItem({item, deleteItem}) {
             onPress={() => deleteItem(item.id)} />
         </View>
     </TouchableOpacity>
+    </View>
   );
 };
 

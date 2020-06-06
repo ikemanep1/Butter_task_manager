@@ -1,17 +1,19 @@
 import * as React from 'react';
-import {Text, View, StyleSheet } from 'react-native';
+import {Button, Text, View, StyleSheet } from 'react-native';
 
-export default function Page1(props) {
+export default function Page1({ navigation }) {
   return (
-    <View style={styles.header}>
-      <Text style={styles.text}>{props.title}</Text>
+    <View >
+      <Text>Welcome to Butter! Butter is a task management application for you to keep track of your daily goals.</Text>
+      <Button
+        title="Next"
+        onPress={() => navigation.navigate('Page2')}
+      />
     </View>
   );
 };
 
-Page1.defaultProps = {
-    title: 'Butter'
-}
+
 
 
 const styles = StyleSheet.create({
