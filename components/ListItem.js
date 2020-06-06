@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
 import uuid from 'react-native-uuid';
 
-export default function ListItem(item) {
+export default function ListItem({navigation}, item) {
   const [items, setItems] = useState ([
     {id: uuid(), text: 'complete tutorials'},
     {id: uuid(), text: 'complete models'},
