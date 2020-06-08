@@ -30,7 +30,10 @@ export default function ListHope({navigation}, item) {
  }
   return (
     <View>
+      <Text>Add your hopes!</Text>
       <AddItem />
+      <Button title="Daily tasks list" onPress={() => navigation.navigate('ListItem')}/>
+      <Button title="Dreams list" onPress={() => navigation.navigate('ListDream')}/>
         <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     <TouchableOpacity style={styles.listItem}>
